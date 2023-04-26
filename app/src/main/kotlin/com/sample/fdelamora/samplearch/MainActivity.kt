@@ -1,0 +1,139 @@
+package com.sample.fdelamora.samplearch
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.viewModels
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.WindowCompat
+import androidx.navigation.NavHostController
+import coil.annotation.ExperimentalCoilApi
+import com.google.accompanist.navigation.animation.AnimatedNavHost
+import com.google.accompanist.navigation.animation.composable
+import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.sample.fdelamora.samplearch.common.resources.ui.AppUserInterface
+import com.sample.fdelamora.samplearch.common.resources.ui.SampleArchitectureScreens
+import com.sample.fdelamora.samplearch.common.resources.ui.catalogs.Animations
+import com.sample.fdelamora.samplearch.features.githubclient.ui.screens.SearchUsersScreen
+import com.sample.fdelamora.samplearch.features.githubclient.ui.screens.UserReposScreen
+import com.sample.fdelamora.samplearch.features.githubclient.viewmodel.SearchUsersViewModel
+import com.sample.fdelamora.samplearch.features.githubclient.viewmodel.UserReposViewModel
+import dagger.hilt.android.AndroidEntryPoint
+
+@ExperimentalCoilApi
+@ExperimentalAnimationApi
+@ExperimentalMaterialApi
+@AndroidEntryPoint
+class MainActivity : ComponentActivity() {
+    private val searchUsersViewModel: SearchUsersViewModel by viewModels()
+    private val userReposViewModel: UserReposViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // Go Fullscreen
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        setContent {
+            SampleArchitectureApp(
+                startScreenRoute = SampleArchitectureScreens.GitHubClient.SearchUsers.name,
+            )
+        }
+    }
+
+    @Composable
+    fun SampleArchitectureApp(
+        startScreenRoute: String,
+    ) {
+        AppUserInterface {
+
+            val systemUiController = rememberSystemUiController()
+
+            val useDarkIcons = false
+            val navBarColor = Color.Transparent
+
+            SideEffect {
+                systemUiController.setStatusBarColor(
+                    color = navBarColor,
+                    darkIcons = useDarkIcons
+                )
+            }
+
+            val navController = rememberAnimatedNavController()
+
+            Box {
+                SampleArchitectureNavHost(
+                    navController = navController,
+                    startScreenRoute = startScreenRoute
+                )
+            }
+        }
+    }
+
+    @ExperimentalCoilApi
+    @Composable
+    fun SampleArchitectureNavHost(
+        navController: NavHostController,
+        startScreenRoute: String,
+        modifier: Modifier = Modifier
+    ) {
+        AnimatedNavHost(
+            navController = navController,
+            startDestination = startScreenRoute,
+            modifier = modifier
+        ) {
+            composable(
+                route = SampleArchitectureScreens.GitHubClient.SearchUsers.name,
+                enterTransition = Animations.enterTransition,
+                exitTransition = Animations.exitTransition,
+                popEnterTransition = Animations.popEnterTransition,
+                popExitTransition = Animations.popExitTransition
+            ) {
+                SearchUsersScreen.Default.Screen(
+                    viewModel = searchUsersViewModel,
+                    onShowUserRepos = { user ->
+                        userReposViewModel.clearRepos()
+                        userReposViewModel.setGitHubUser(user)
+                        navController.navigate(SampleArchitectureScreens.GitHubClient.UserRepos.name)
+                    }
+                )
+            }
+            composable(
+                route = SampleArchitectureScreens.GitHubClient.UserRepos.name,
+                enterTransition = Animations.enterTransition,
+                exitTransition = Animations.exitTransition,
+                popEnterTransition = Animations.popEnterTransition,
+                popExitTransition = Animations.popExitTransition
+            ) {
+                UserReposScreen.Default.Screen(
+                    viewModel = userReposViewModel,
+                    navController = navController,
+                )
+            }
+        }
+    }
+}
+
+@ExperimentalMaterialApi
+@ExperimentalCoilApi
+@Preview(showSystemUi = true)
+@Composable
+private fun DefaultPreview() {
+    AppUserInterface {
+        SearchUsersScreen.Default.Content(
+            userSearchPrompt = "",
+            foundUsers = listOf(),
+            onSearchUsersPromptUpdated = {},
+            onSearchUsersClick = {},
+            onShowUserReposClick = {}
+        )
+    }
+}

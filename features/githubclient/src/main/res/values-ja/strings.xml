@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search_users_title">ユーザー検索</string>
+    <string name="search_users_textfield_placeholder">ユーザー名…</string>
+    <string name="user_repos_no_forks_title">ユーザーリポジトリ [フォークなし]</string>
+    <string name="user_details_card_followers">フォロワー: %1$s</string>
+    <string name="user_details_card_following">フォロイー: %1$s</string>
+</resources>
