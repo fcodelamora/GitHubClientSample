@@ -10,17 +10,17 @@ import javax.inject.Singleton
 
 @Singleton
 class UseCaseProvider @Inject constructor(
-    private val gitHubRepository: IGitHubRepository,
+    private val gitHubRepository: IGitHubRepository
 ) {
     fun provideSearchUsersUseCase(
-        view: ISearchUsersUseCaseView
+        view: ISearchUsersUseCaseView,
     ) = SearchUsersUseCase(
         view,
         gitHubRepository
     )
 
     fun provideGetUserRepositoriesUseCase(
-        view: IGetUserRepositoriesView
+        view: IGetUserRepositoriesView,
     ) = GetUserRepositoriesUseCase(
         view,
         gitHubRepository

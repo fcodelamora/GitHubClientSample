@@ -11,7 +11,7 @@ class GetUserRepositoriesUseCase(
     private val gitHubRepository: IGitHubRepository
 ) {
     suspend fun execute(
-        user: GitHubUser
+        user: GitHubUser,
     ) {
         view.showProgressView()
 
