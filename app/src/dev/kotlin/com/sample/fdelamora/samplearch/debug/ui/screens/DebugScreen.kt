@@ -29,7 +29,6 @@ object DebugScreen {
 
         @Composable
         fun Screen(viewmodel: DebugViewModel) {
-
             Content(
                 delayInMillis = viewmodel.delay,
                 availableErrorList = viewmodel.availableErrorList,
@@ -61,7 +60,6 @@ object DebugScreen {
             onIsIncompleteResponse: (Boolean) -> Unit = {},
             onUpdateFlags: () -> Unit = {}
         ) {
-
             val scrollState = rememberScrollState()
 
             Column(

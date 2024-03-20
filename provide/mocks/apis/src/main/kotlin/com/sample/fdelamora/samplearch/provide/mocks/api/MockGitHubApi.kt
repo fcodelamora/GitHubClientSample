@@ -20,7 +20,6 @@ class MockGitHubApi @Inject constructor(private val mockDebugFlagsRepository: IM
     override suspend fun userDetails(username: String): UserDetailsResponse {
         mockDebugFlagsRepository.handleError()
         mockDebugFlagsRepository.loadMockDebugFlags().run {
-
             val mock = generateSearchUsersResponse(
                 usersToGenerate = userCount,
                 isIncompleteResponse = isIncompleteResponse

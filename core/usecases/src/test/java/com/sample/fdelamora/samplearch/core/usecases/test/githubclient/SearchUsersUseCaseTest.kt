@@ -47,7 +47,6 @@ class SearchUsersUseCaseTest {
 
     @Test
     fun `execute - success`() = runBlocking {
-
         useCase.execute("username")
 
         Mockito.verify(mockView, Mockito.times(1)).onUsersFound(mockList)
@@ -58,7 +57,6 @@ class SearchUsersUseCaseTest {
 
     @Test
     fun `execute - error - user data throws exception`() = runBlocking {
-
         given(mockRepository.searchUsers(any())) willAnswer {
             throw AppException.GeneralApiException(messageFromApi = "", errorCode = 0)
         }

@@ -100,7 +100,6 @@ fun TabButton(
     selected: Boolean = false,
     onClick: () -> Unit = {}
 ) {
-
     val strokeColor = if (selected) MaterialTheme.colors.secondary else Color.Transparent
     val shape = remember { RoundedCornerShape(percent = 50) }
 
@@ -125,9 +124,13 @@ fun TabButton(
             text = text,
             style = MaterialTheme.typography.body2.copy(
                 fontWeight = if (isEnabled) FontWeight.Bold else FontWeight.Normal,
-                color = if (isEnabled) MaterialTheme.colors.secondary else MaterialTheme.colors.secondary.copy(
-                    alpha = 0.5f
-                ),
+                color = if (isEnabled) {
+                    MaterialTheme.colors.secondary
+                } else {
+                    MaterialTheme.colors.secondary.copy(
+                        alpha = 0.5f
+                    )
+                },
                 textDecoration = if (isEnabled.not()) TextDecoration.LineThrough else null,
             ),
             modifier = Modifier.padding(vertical = 8.dp, horizontal = 10.dp)
@@ -193,7 +196,7 @@ fun IconTextButton(
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(4.dp)) {
             Image(
                 painter = painterResource(id = iconResId),
-                contentDescription = null, // Decorative
+                contentDescription = null,
                 colorFilter = ColorFilter.tint(MaterialTheme.colors.secondary),
                 contentScale = ContentScale.Inside,
                 modifier = Modifier

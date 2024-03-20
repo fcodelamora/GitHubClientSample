@@ -40,7 +40,6 @@ fun GitHubUserDetails(
     gitHubUser: GitHubUser,
     modifier: Modifier = Modifier
 ) {
-
     val painter = rememberAsyncImagePainter(
         ImageRequest.Builder(LocalContext.current)
             .data(gitHubUser.avatarUrl)

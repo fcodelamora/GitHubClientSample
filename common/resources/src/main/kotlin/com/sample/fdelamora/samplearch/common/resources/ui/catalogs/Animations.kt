@@ -26,10 +26,10 @@ object Animations {
             slideInHorizontally(
                 initialOffsetX = { DEFAULT_ENTER_OFFSET },
                 animationSpec =
-                    tween(
-                        durationMillis = DEFAULT_SCREEN_TRANSITION_DURATION,
-                        easing = FastOutSlowInEasing,
-                    ),
+                tween(
+                    durationMillis = DEFAULT_SCREEN_TRANSITION_DURATION,
+                    easing = FastOutSlowInEasing,
+                ),
             ) + fadeIn(animationSpec = tween(durationMillis = DEFAULT_SCREEN_TRANSITION_DURATION))
         }
 

@@ -40,7 +40,6 @@ fun GitHubUserCardMinimal(
     onCardTap: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
-
     val painter = rememberAsyncImagePainter(
         ImageRequest.Builder(LocalContext.current)
             .data(user.avatarUrl)
@@ -71,7 +70,9 @@ fun GitHubUserCardMinimal(
                 contentDescription = null,
                 colorFilter = if (painter.state !is AsyncImagePainter.State.Success) {
                     tint(MaterialTheme.colors.secondary)
-                } else { null },
+                } else {
+                    null
+                },
                 modifier = Modifier
                     .size(80.dp)
                     .clip(CircleShape)

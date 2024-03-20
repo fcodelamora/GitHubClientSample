@@ -46,7 +46,6 @@ fun SearchTextField(
         .background(color = MaterialTheme.colors.background)
         .height(IntrinsicSize.Min)
 ) {
-
     val keyboardController = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
 

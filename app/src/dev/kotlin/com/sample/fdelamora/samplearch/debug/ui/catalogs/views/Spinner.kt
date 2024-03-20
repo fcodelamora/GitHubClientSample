@@ -25,7 +25,6 @@ import com.sample.fdelamora.samplearch.common.resources.ui.catalogs.CatalogView
 fun SimpleSpinner(listValues: List<String>, selectedIndex: Int, onSelected: (Int) -> Unit) = Column(
     Modifier.fillMaxWidth()
 ) {
-
     var expanded by remember { mutableStateOf(false) }
     var buttonText by remember { mutableStateOf(listValues[selectedIndex]) }
 

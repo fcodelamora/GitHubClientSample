@@ -32,7 +32,6 @@ class SearchUsersViewModel @Inject constructor(
 
     fun searchUsers() {
         if (!userSearchPrompt.isNullOrBlank()) {
-
             viewModelScope.launch {
                 val useCase = useCaseProvider.provideSearchUsersUseCase(this@SearchUsersViewModel)
                 useCase.execute(userSearchPrompt)

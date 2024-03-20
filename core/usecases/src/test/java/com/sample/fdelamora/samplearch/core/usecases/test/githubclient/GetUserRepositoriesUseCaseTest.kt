@@ -51,7 +51,6 @@ class GetUserRepositoriesUseCaseTest {
 
     @Test
     fun `execute - success`() = runBlocking {
-
         val updatedUser = mockGitHubUser()
         val mockReposWithNoForks = listOf(mockRepos[0], mockRepos[2])
 
@@ -86,7 +85,6 @@ class GetUserRepositoriesUseCaseTest {
 
     @Test
     fun `execute - error - repository data throws exception`() = runBlocking {
-
         given(mockRepository.searchUserRepositories(any())) willAnswer {
             throw AppException.GeneralApiException(messageFromApi = "", errorCode = 0)
         }
