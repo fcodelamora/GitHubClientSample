@@ -4,7 +4,7 @@ object Dependencies {
         // Kotlin
         // https://developer.android.com/jetpack/androidx/releases/compose-runtime
         // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-        const val COMPOSE_KOTLIN_COMPILER_EXTENSION = "1.4.6"
+        const val COMPOSE_KOTLIN_COMPILER_EXTENSION = "1.5.10"
         const val ANDROIDX_COMPOSE_VERSION = "1.6.3"
 
         const val HILT = "2.51"
