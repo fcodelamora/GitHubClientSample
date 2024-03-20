@@ -1,6 +1,6 @@
 # Sample Arch
 
-![Android Studio](https://img.shields.io/badge/Android%20Studio-Hedgehog%202023.1.1-B4D455.svg?style=popout)
+![Android Studio](https://img.shields.io/badge/Android%20Studio-Jellyfish%202023.3.1-B4D455.svg?style=popout)
 
 Sample application to test and practice new technologies using GitHub API for data.
 
@@ -17,8 +17,9 @@ Test are made available through the Gradle task `Run Tests` in Android Studio
 
 #### Building the Project & GitHub API key
 
-You will need to create a `project.properties` file in the project root directory, and
+- You will need to create a `project.properties` file in the project root directory, and
 add `apiKeys.githubApiKey="your_api_key_from_github_api"`.
+- Java `19` is used to build the project.
 
 ## Screenshots
 

@@ -14,8 +14,8 @@ repositories {
 
 dependencies {
 
-    implementation("com.android.tools.build:gradle:8.2.2")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.20")
+    implementation("com.android.tools.build:gradle:8.3.1")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
     implementation("com.google.dagger:hilt-android-gradle-plugin:2.51")
-    implementation("com.mikepenz.aboutlibraries.plugin:aboutlibraries-plugin:10.1.0")
+    implementation("com.mikepenz.aboutlibraries.plugin:aboutlibraries-plugin:10.6.2")
 }

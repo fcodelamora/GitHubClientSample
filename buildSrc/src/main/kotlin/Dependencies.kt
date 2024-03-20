@@ -4,7 +4,7 @@ object Dependencies {
         // Kotlin
         // https://developer.android.com/jetpack/androidx/releases/compose-runtime
         // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
-        const val COMPOSE_KOTLIN_COMPILER_EXTENSION = "1.4.6"
+        const val COMPOSE_KOTLIN_COMPILER_EXTENSION = "1.5.10"
         const val ANDROIDX_COMPOSE_VERSION = "1.6.3"
 
         const val HILT = "2.51"
@@ -71,9 +71,9 @@ object Dependencies {
     const val COIL = "io.coil-kt:coil:${COIL_VERSION}"
     const val COIL_COMPOSE_EXTENSIONS = "io.coil-kt:coil-compose:${COIL_VERSION}"
 
-    const val ABOUT_LIBRARIES_UI = "com.mikepenz:aboutlibraries-compose:10.1.0" // Update buildSrc too
+    const val ABOUT_LIBRARIES_UI = "com.mikepenz:aboutlibraries-compose:10.6.2" // Update buildSrc too
 
-    const val LOTTIE = "com.airbnb.android:lottie-compose:6.0.0"
+    const val LOTTIE = "com.airbnb.android:lottie-compose:6.4.0"
 
     /**
      * Project annotation processor dependencies, makes it easy to include external binaries or
