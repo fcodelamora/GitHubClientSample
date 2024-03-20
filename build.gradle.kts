@@ -5,17 +5,23 @@ tasks.register("clean", Delete::class) {
 }
 
 plugins {
-    id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
+    id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
 }
 
 subprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
     ktlint {
+        // version.set("0.46.0")
         verbose.set(true)
         android.set(true)
         outputToConsole.set(true)
         ignoreFailures.set(false)
-        additionalEditorconfigFile.set(file("$rootProject/.editorconfg"))
+        additionalEditorconfig.map {
+            "indent_size" to "4"
+            "insert_final_newline" to "unset"
+            "max_line_length" to "120"
+            "disabled_rules" to "import-ordering"
+        }
         reporters {
             reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.PLAIN)
             reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.CHECKSTYLE)
@@ -25,6 +31,6 @@ subprojects {
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }

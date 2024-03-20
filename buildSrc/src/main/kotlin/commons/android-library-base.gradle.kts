@@ -1,5 +1,7 @@
 package commons
 
+import Dependencies
+
 /**
  * Base Gradle file used by all com.android.library Gradle files to reduce repetition of shared
  * attributes.
@@ -24,12 +26,12 @@ android {
 
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
     android.sourceSets.all {

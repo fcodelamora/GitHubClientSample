@@ -10,7 +10,7 @@ class SearchUsersUseCase(
     private val gitHubRepository: IGitHubRepository
 ) {
     suspend fun execute(
-        prompt: String
+        prompt: String,
     ) {
         view.showProgressView()
 

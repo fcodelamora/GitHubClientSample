@@ -24,7 +24,6 @@ class DebugSampleArchitectureApplication : SampleArchitectureApplication() {
     }
 
     private fun createDebugNotificationChannel() {
-
         val channelDebug = NotificationChannel(
             CHANNEL_ID,
             "Debug",

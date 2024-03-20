@@ -14,9 +14,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import coil.annotation.ExperimentalCoilApi
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.sample.fdelamora.samplearch.common.resources.ui.AppUserInterface
@@ -50,11 +50,8 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun SampleArchitectureApp(
-        startScreenRoute: String,
-    ) {
+    fun SampleArchitectureApp(startScreenRoute: String) {
         AppUserInterface {
-
             val systemUiController = rememberSystemUiController()
 
             val useDarkIcons = false
@@ -63,7 +60,7 @@ class MainActivity : ComponentActivity() {
             SideEffect {
                 systemUiController.setStatusBarColor(
                     color = navBarColor,
-                    darkIcons = useDarkIcons
+                    darkIcons = useDarkIcons,
                 )
             }
 
@@ -72,7 +69,7 @@ class MainActivity : ComponentActivity() {
             Box {
                 SampleArchitectureNavHost(
                     navController = navController,
-                    startScreenRoute = startScreenRoute
+                    startScreenRoute = startScreenRoute,
                 )
             }
         }
@@ -83,19 +80,19 @@ class MainActivity : ComponentActivity() {
     fun SampleArchitectureNavHost(
         navController: NavHostController,
         startScreenRoute: String,
-        modifier: Modifier = Modifier
+        modifier: Modifier = Modifier,
     ) {
-        AnimatedNavHost(
+        NavHost(
             navController = navController,
             startDestination = startScreenRoute,
-            modifier = modifier
+            modifier = modifier,
         ) {
             composable(
                 route = SampleArchitectureScreens.GitHubClient.SearchUsers.name,
                 enterTransition = Animations.enterTransition,
                 exitTransition = Animations.exitTransition,
                 popEnterTransition = Animations.popEnterTransition,
-                popExitTransition = Animations.popExitTransition
+                popExitTransition = Animations.popExitTransition,
             ) {
                 SearchUsersScreen.Default.Screen(
                     viewModel = searchUsersViewModel,
@@ -103,7 +100,7 @@ class MainActivity : ComponentActivity() {
                         userReposViewModel.clearRepos()
                         userReposViewModel.setGitHubUser(user)
                         navController.navigate(SampleArchitectureScreens.GitHubClient.UserRepos.name)
-                    }
+                    },
                 )
             }
             composable(
@@ -111,7 +108,7 @@ class MainActivity : ComponentActivity() {
                 enterTransition = Animations.enterTransition,
                 exitTransition = Animations.exitTransition,
                 popEnterTransition = Animations.popEnterTransition,
-                popExitTransition = Animations.popExitTransition
+                popExitTransition = Animations.popExitTransition,
             ) {
                 UserReposScreen.Default.Screen(
                     viewModel = userReposViewModel,
@@ -133,7 +130,7 @@ private fun DefaultPreview() {
             foundUsers = listOf(),
             onSearchUsersPromptUpdated = {},
             onSearchUsersClick = {},
-            onShowUserReposClick = {}
+            onShowUserReposClick = {},
         )
     }
 }

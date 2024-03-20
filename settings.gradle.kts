@@ -9,7 +9,7 @@ pluginManagement {
         id("com.android.application") version "7.1.0"
         id("com.android.library") version "7.1.0"
         id("org.jetbrains.kotlin.android") version "1.8.20"
-        id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
+        id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
     }
 }
 dependencyResolutionManagement {
@@ -23,9 +23,7 @@ dependencyResolutionManagement {
 rootProject.name = "SampleArchitecture"
 
 include(
-
     ":app",
-
     // Core
     ":core:apis",
     ":core:datasources",
@@ -33,21 +31,16 @@ include(
     ":core:repositories",
     ":core:systems",
     ":core:usecases",
-
     // Provide
     ":provide:apis",
     ":provide:repositories",
     ":provide:datasources",
     ":provide:systems",
-
     // Mocks
     ":provide:mocks:apis",
-
     // Features
     ":features:githubclient",
-
     // Common
     ":common:resources",
     ":common:di",
-
 )

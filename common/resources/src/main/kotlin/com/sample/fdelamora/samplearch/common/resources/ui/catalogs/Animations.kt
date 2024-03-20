@@ -1,6 +1,6 @@
 package com.sample.fdelamora.samplearch.common.resources.ui.catalogs
 
-import androidx.compose.animation.AnimatedContentScope
+import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -21,38 +21,39 @@ object Animations {
     // MEMO:  MUST generate a new Transition instance each time.
     // If the same instance is created and shared it breaks the animated navhost behavior
 
-    val enterTransition: (AnimatedContentScope<NavBackStackEntry>.() -> EnterTransition?)
+    val enterTransition: (AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition?)
         get() = {
             slideInHorizontally(
                 initialOffsetX = { DEFAULT_ENTER_OFFSET },
-                animationSpec = tween(
+                animationSpec =
+                tween(
                     durationMillis = DEFAULT_SCREEN_TRANSITION_DURATION,
-                    easing = FastOutSlowInEasing
-                )
+                    easing = FastOutSlowInEasing,
+                ),
             ) + fadeIn(animationSpec = tween(durationMillis = DEFAULT_SCREEN_TRANSITION_DURATION))
         }
 
-    val exitTransition: (AnimatedContentScope<NavBackStackEntry>.() -> ExitTransition?)
+    val exitTransition: (AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition?)
         get() = {
             slideOutHorizontally(
                 targetOffsetX = { -DEFAULT_ENTER_OFFSET },
-                animationSpec = tween(DEFAULT_SCREEN_TRANSITION_DURATION)
+                animationSpec = tween(DEFAULT_SCREEN_TRANSITION_DURATION),
             ) + fadeOut(animationSpec = tween(durationMillis = DEFAULT_SCREEN_TRANSITION_DURATION))
         }
 
-    val popEnterTransition: (AnimatedContentScope<NavBackStackEntry>.() -> EnterTransition?)
+    val popEnterTransition: (AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition?)
         get() = {
             slideInHorizontally(
                 initialOffsetX = { -DEFAULT_ENTER_OFFSET },
-                animationSpec = tween(DEFAULT_SCREEN_TRANSITION_DURATION)
+                animationSpec = tween(DEFAULT_SCREEN_TRANSITION_DURATION),
             ) + fadeIn(animationSpec = tween(durationMillis = DEFAULT_SCREEN_TRANSITION_DURATION))
         }
 
-    val popExitTransition: (AnimatedContentScope<NavBackStackEntry>.() -> ExitTransition?)
+    val popExitTransition: (AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition?)
         get() = {
             slideOutHorizontally(
                 targetOffsetX = { DEFAULT_ENTER_OFFSET },
-                animationSpec = tween(DEFAULT_SCREEN_TRANSITION_DURATION)
+                animationSpec = tween(DEFAULT_SCREEN_TRANSITION_DURATION),
             ) + fadeOut(animationSpec = tween(durationMillis = DEFAULT_SCREEN_TRANSITION_DURATION))
         }
 }
