@@ -24,12 +24,15 @@ class UserReposViewModel @Inject constructor(
     var user by savedStateHandle.mutableStateOf<GitHubUser?>(null)
         private set
 
-    var repositories by savedStateHandle.mutableStateOf<MutableList<GitHubRepo>>(mutableListOf())
+    var repositories by savedStateHandle.mutableStateOf<List<GitHubRepo>>(emptyList())
         private set
 
-    override fun onUserRepositoriesReceived(gitHubUser: GitHubUser, repositories: List<GitHubRepo>) {
+    override fun onUserRepositoriesReceived(
+        gitHubUser: GitHubUser,
+        repositories: List<GitHubRepo>
+    ) {
         this.user = gitHubUser
-        this.repositories.addAll(repositories)
+        this.repositories = repositories
     }
 
     fun setGitHubUser(user: GitHubUser) {
@@ -38,7 +41,7 @@ class UserReposViewModel @Inject constructor(
     }
 
     fun clearRepos() {
-        repositories.clear()
+        repositories = emptyList()
     }
 
     private fun searchRepos() {
