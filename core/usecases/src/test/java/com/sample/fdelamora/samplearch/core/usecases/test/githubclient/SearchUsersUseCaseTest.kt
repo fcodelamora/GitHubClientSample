@@ -27,12 +27,11 @@ class SearchUsersUseCaseTest {
     )
 
     // Simulate the incomplete user information received from search/user
-    private fun makeMockSearchGithubUser(index: Int = 1): GitHubUser =
-        mockGitHubUser(index).copy(
-            name = null,
-            followers = null,
-            following = null
-        )
+    private fun makeMockSearchGithubUser(index: Int = 1): GitHubUser = mockGitHubUser(index).copy(
+        name = null,
+        followers = null,
+        following = null
+    )
 
     @BeforeEach
     fun before() = runBlocking {

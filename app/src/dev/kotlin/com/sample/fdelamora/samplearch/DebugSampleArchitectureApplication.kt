@@ -9,10 +9,9 @@ import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import co.touchlab.kermit.Logger
 import com.sample.fdelamora.samplearch.common.resources.AppDrawable
 import com.sample.fdelamora.samplearch.debug.DebugActivity
-import timber.log.Timber
-import timber.log.debug
 
 class DebugSampleArchitectureApplication : SampleArchitectureApplication() {
 
@@ -25,7 +24,7 @@ class DebugSampleArchitectureApplication : SampleArchitectureApplication() {
 
     private fun createDebugNotificationChannel() {
         val channelDebug = NotificationChannel(
-            CHANNEL_ID,
+            ChannelId,
             "Debug",
             NotificationManager.IMPORTANCE_LOW
         ).apply {
@@ -39,7 +38,7 @@ class DebugSampleArchitectureApplication : SampleArchitectureApplication() {
 
         if (channelDebug !in notificationManager.notificationChannels) {
             notificationManager.createNotificationChannel(channelDebug).also {
-                Timber.debug { "Created Notification Channel: ${channelDebug.name}" }
+                Logger.d { "Created Notification Channel: ${channelDebug.name}" }
             }
         }
     }
@@ -53,7 +52,7 @@ class DebugSampleArchitectureApplication : SampleArchitectureApplication() {
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
 
-        val notification = NotificationCompat.Builder(this, CHANNEL_ID)
+        val notification = NotificationCompat.Builder(this, ChannelId)
             .setSmallIcon(AppDrawable.ic_debug_notification)
             .setContentTitle("Debug options")
             .setContentText("Open debug screen")
@@ -71,11 +70,11 @@ class DebugSampleArchitectureApplication : SampleArchitectureApplication() {
             return
         }
 
-        NotificationManagerCompat.from(this).notify(NOTIFICATION_ID, notification)
+        NotificationManagerCompat.from(this).notify(NotificationId, notification)
     }
 
     companion object {
-        const val CHANNEL_ID = "debug_options_channel"
-        const val NOTIFICATION_ID = 9999
+        const val ChannelId = "debug_options_channel"
+        const val NotificationId = 9999
     }
 }

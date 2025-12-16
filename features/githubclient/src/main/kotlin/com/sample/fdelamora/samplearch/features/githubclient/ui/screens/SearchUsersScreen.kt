@@ -28,7 +28,7 @@ object SearchUsersScreen {
         @Composable
         fun Screen(
             viewModel: SearchUsersViewModel,
-            onShowUserRepos: (GitHubUser) -> Unit,
+            onShowUserRepos: (GitHubUser) -> Unit
         ) {
             SharedErrorsHandler(viewModel = viewModel)
             Content(
@@ -47,7 +47,7 @@ object SearchUsersScreen {
             foundUsers: List<GitHubUser>,
             onSearchUsersPromptUpdated: (String) -> Unit = {},
             onSearchUsersClick: () -> Unit = {},
-            onShowUserReposClick: (GitHubUser) -> Unit = {},
+            onShowUserReposClick: (GitHubUser) -> Unit = {}
         ) {
             Column(
                 Modifier
@@ -73,7 +73,7 @@ object SearchUsersScreen {
                     items(count = foundUsers.size, itemContent = { index ->
                         GitHubUserCardMinimal(
                             user = foundUsers[index],
-                            onCardTap = { onShowUserReposClick(foundUsers[index]) },
+                            onCardTap = { onShowUserReposClick(foundUsers[index]) }
                         )
                     })
                 }

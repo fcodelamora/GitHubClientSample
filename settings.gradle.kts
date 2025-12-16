@@ -1,23 +1,24 @@
 pluginManagement {
     repositories {
-        gradlePluginPortal()
-        google()
         mavenCentral()
-        maven("https://oss.sonatype.org/content/repositories/snapshots/")
+        gradlePluginPortal()
+        maven("https://plugins.gradle.org/m2/")
+        google()
     }
     plugins {
-        id("com.android.application") version "8.3.0"
-        id("com.android.library") version "8.3.0"
-        id("org.jetbrains.kotlin.android") version "1.9.22"
-        id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
+        id("com.android.application") version "8.13.2"
+        id("com.android.library") version "8.13.2"
+        id("org.jlleitschuh.gradle.ktlint") version "14.0.1"
+        id("org.jetbrains.kotlin.android") version "2.2.21" // Kotlin Lang
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        google()
+        gradlePluginPortal()
         mavenCentral()
-        maven("https://oss.sonatype.org/content/repositories/snapshots/")
+        google()
+        maven("https://plugins.gradle.org/m2/")
     }
 }
 rootProject.name = "SampleArchitecture"

@@ -9,9 +9,7 @@ class SearchUsersUseCase(
     private val view: ISearchUsersUseCaseView,
     private val gitHubRepository: IGitHubRepository
 ) {
-    suspend fun execute(
-        prompt: String,
-    ) {
+    suspend fun execute(prompt: String) {
         view.showProgressView()
 
         try {

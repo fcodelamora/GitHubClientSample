@@ -1,6 +1,6 @@
 plugins {
     id("commons.kotlin-library")
-    kotlin("kapt")
+    id("com.google.devtools.ksp")
 }
 
 dependencies {
@@ -10,8 +10,8 @@ dependencies {
     implementation(Dependencies.OKHTTP_LOGGING)
 
     implementation(Dependencies.MOSHI)
-    kapt(Dependencies.MOSHI_CODEGEN)
+    ksp(Dependencies.MOSHI_CODEGEN)
 
     // Testing
-    kaptTest(Dependencies.MOSHI_CODEGEN)
+    kspTest(Dependencies.MOSHI_CODEGEN)
 }

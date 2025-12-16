@@ -29,7 +29,7 @@ object UserReposScreen {
         @Composable
         fun Screen(
             viewModel: UserReposViewModel,
-            navController: NavController,
+            navController: NavController
         ) {
             val context = LocalContext.current
 
@@ -76,7 +76,10 @@ object UserReposScreen {
     }
 }
 
-private fun openCustomTab(url: String, context: Context) {
+private fun openCustomTab(
+    url: String,
+    context: Context
+) {
     val packageName = "com.android.chrome"
     val builder = CustomTabsIntent.Builder()
     builder.setShowTitle(true)

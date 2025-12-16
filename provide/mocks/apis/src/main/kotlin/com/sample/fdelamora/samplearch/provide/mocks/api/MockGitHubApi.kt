@@ -1,5 +1,6 @@
 package com.sample.fdelamora.samplearch.provide.mocks.api
 
+import co.touchlab.kermit.Logger
 import com.sample.fdelamora.samplearch.core.api.githubclient.IGitHubApi
 import com.sample.fdelamora.samplearch.core.api.githubclient.requests.GetSearchUserRepositoriesRequestParams
 import com.sample.fdelamora.samplearch.core.api.githubclient.requests.GetSearchUsersRequestParams
@@ -8,8 +9,6 @@ import com.sample.fdelamora.samplearch.core.api.githubclient.response.SearchUser
 import com.sample.fdelamora.samplearch.core.api.githubclient.response.SearchUsersResponse
 import com.sample.fdelamora.samplearch.core.api.githubclient.response.UserDetailsResponse
 import com.sample.fdelamora.samplearch.provide.mocks.api.debugflags.IMockDebugFlagsRepository
-import timber.log.Timber
-import timber.log.debug
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -33,7 +32,7 @@ class MockGitHubApi @Inject constructor(private val mockDebugFlagsRepository: IM
                 following = 100,
                 avatarUrl = "https://via.placeholder.com/250x250.png/AEB1BF/00146E?text=$username"
             ).also {
-                Timber.debug { it.toString() }
+                Logger.d { it.toString() }
             }
         }
     }
@@ -45,20 +44,21 @@ class MockGitHubApi @Inject constructor(private val mockDebugFlagsRepository: IM
                 usersToGenerate = userCount,
                 isIncompleteResponse = isIncompleteResponse
             ).also {
-                Timber.debug { it.toString() }
+                Logger.d { it.toString() }
             }
         }
     }
 
-    override suspend fun searchUserRepositories(requestParams: GetSearchUserRepositoriesRequestParams):
-        SearchUserRepositoriesResponse {
+    override suspend fun searchUserRepositories(
+        requestParams: GetSearchUserRepositoriesRequestParams
+    ): SearchUserRepositoriesResponse {
         mockDebugFlagsRepository.handleError()
         mockDebugFlagsRepository.loadMockDebugFlags().run {
             return generateSearchUserRepositoriesResponse(
                 reposToGenerate = repoCount,
                 isIncompleteResponse = isIncompleteResponse
             ).also {
-                Timber.debug { it.toString() }
+                Logger.d { it.toString() }
             }
         }
     }
@@ -133,7 +133,7 @@ class MockGitHubApi @Inject constructor(private val mockDebugFlagsRepository: IM
             hireable = null,
             blog = if (identifier % 3 == 0) null else "My Blog #$identifier",
             company = if (identifier % 2 == 0) null else "Company #$identifier Inc.",
-            suspendedAt = null,
+            suspendedAt = null
         )
     }
 

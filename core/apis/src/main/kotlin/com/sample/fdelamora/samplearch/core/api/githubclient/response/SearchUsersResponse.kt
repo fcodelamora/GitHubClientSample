@@ -12,5 +12,5 @@ data class SearchUsersResponse(
     val incompleteResponse: Boolean,
 
     @field:Json(name = "items")
-    val items: List<UserDetailsResponse>,
+    val items: List<UserDetailsResponse>
 )

@@ -40,7 +40,7 @@ fun SearchTextField(
     placeholder: String = "",
     onValueChange: (String) -> Unit = {},
     onSearchClick: () -> Unit = {},
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) = Row(
     modifier = modifier
         .background(color = MaterialTheme.colors.background)

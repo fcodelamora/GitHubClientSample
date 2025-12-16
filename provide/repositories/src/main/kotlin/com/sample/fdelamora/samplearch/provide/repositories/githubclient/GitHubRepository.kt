@@ -20,9 +20,7 @@ import javax.inject.Singleton
 class GitHubRepository @Inject constructor(private val gitHubApi: IGitHubApi) :
     IGitHubRepository {
 
-    override suspend fun userDetails(
-        username: String
-    ): GitHubUser = withContext(Dispatchers.IO) {
+    override suspend fun userDetails(username: String): GitHubUser = withContext(Dispatchers.IO) {
         try {
             gitHubApi.userDetails(username)
                 .toGitHubUser()
@@ -31,9 +29,7 @@ class GitHubRepository @Inject constructor(private val gitHubApi: IGitHubApi) :
         }
     }
 
-    override suspend fun searchUsers(
-        keywords: String
-    ): List<GitHubUser> = withContext(Dispatchers.IO) {
+    override suspend fun searchUsers(keywords: String): List<GitHubUser> = withContext(Dispatchers.IO) {
         try {
             gitHubApi.searchUsers(
                 GetSearchUsersRequestParams(keywords = keywords)
@@ -43,9 +39,7 @@ class GitHubRepository @Inject constructor(private val gitHubApi: IGitHubApi) :
         }
     }
 
-    override suspend fun searchUserRepositories(
-        user: GitHubUser
-    ): List<GitHubRepo> = withContext(Dispatchers.IO) {
+    override suspend fun searchUserRepositories(user: GitHubUser): List<GitHubRepo> = withContext(Dispatchers.IO) {
         try {
             gitHubApi.searchUserRepositories(
                 GetSearchUserRepositoriesRequestParams(login = user.login)

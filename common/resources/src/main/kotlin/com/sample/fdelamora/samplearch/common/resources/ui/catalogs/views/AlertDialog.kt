@@ -12,7 +12,10 @@ import com.sample.fdelamora.samplearch.core.entities.ErrorViewData
 // AlertDialogs
 
 @Composable
-fun ErrorDialog(errorViewData: ErrorViewData, onOkPressed: () -> Unit) {
+fun ErrorDialog(
+    errorViewData: ErrorViewData,
+    onOkPressed: () -> Unit
+) {
     AlertDialog(
         onDismissRequest = { },
         title = { errorViewData.title?.let { Text(it) } },

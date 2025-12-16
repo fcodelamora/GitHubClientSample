@@ -28,7 +28,8 @@ fun GitHubRepoCard(
     Card(
         shape = RoundedCornerShape(percent = 10),
         elevation = 4.dp,
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier
+            .fillMaxWidth()
             .padding(8.dp)
     ) {
         Column(

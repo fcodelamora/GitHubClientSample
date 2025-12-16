@@ -26,9 +26,16 @@ class SavedStateHandleDelegate<T>(
         initializer(savedValue, ::updateValue)
     }
 
-    override fun getValue(thisRef: Any, property: KProperty<*>) = state.value
+    override fun getValue(
+        thisRef: Any,
+        property: KProperty<*>
+    ) = state.value
 
-    override fun setValue(thisRef: Any, property: KProperty<*>, value: T) {
+    override fun setValue(
+        thisRef: Any,
+        property: KProperty<*>,
+        value: T
+    ) {
         updateValue(value)
     }
 
@@ -40,7 +47,7 @@ class SavedStateHandleDelegate<T>(
 
 fun <T> SavedStateHandle.mutableStateOf(
     defaultValue: T,
-    initializer: (valueLoadedFromState: T?, setter: (T) -> Unit) -> Unit = { _, _ -> },
+    initializer: (valueLoadedFromState: T?, setter: (T) -> Unit) -> Unit = { _, _ -> }
 ) = PropertyDelegateProvider<Any, SavedStateHandleDelegate<T>> { _, property ->
     SavedStateHandleDelegate(
         savedStateHandle = this,

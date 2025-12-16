@@ -17,14 +17,10 @@ import retrofit2.http.QueryMap
 interface IGitHubApi {
 
     @GET("users/{username}")
-    suspend fun userDetails(
-        @Path("username") username: String
-    ): UserDetailsResponse
+    suspend fun userDetails(@Path("username") username: String): UserDetailsResponse
 
     @GET("search/users")
-    suspend fun searchUsers(
-        @QueryMap(encoded = true) requestParams: GetSearchUsersRequestParams
-    ): SearchUsersResponse
+    suspend fun searchUsers(@QueryMap(encoded = true) requestParams: GetSearchUsersRequestParams): SearchUsersResponse
 
     @GET("search/repositories")
     suspend fun searchUserRepositories(
@@ -35,7 +31,7 @@ interface IGitHubApi {
         fun provide(
             baseUrl: String,
             apiKey: String,
-            isOutputEnabled: Boolean,
+            isOutputEnabled: Boolean
         ): IGitHubApi {
             val builder = OkHttpClient.Builder()
                 .addInterceptor(GitHubRequestInterceptor(apiKey))

@@ -12,10 +12,9 @@ import javax.inject.Singleton
 object ApiModule {
     @Singleton
     @Provides
-    fun provideGitHubApi(): IGitHubApi =
-        IGitHubApi.provide(
-            baseUrl = ApisBuildConfig.API_BASE_URL_GITHUB,
-            apiKey = ApisBuildConfig.API_KEY_GITHUB,
-            isOutputEnabled = ApisBuildConfig.DEBUG
-        )
+    fun provideGitHubApi(): IGitHubApi = IGitHubApi.provide(
+        baseUrl = ApisBuildConfig.API_BASE_URL_GITHUB,
+        apiKey = ApisBuildConfig.API_KEY_GITHUB,
+        isOutputEnabled = ApisBuildConfig.DEBUG
+    )
 }

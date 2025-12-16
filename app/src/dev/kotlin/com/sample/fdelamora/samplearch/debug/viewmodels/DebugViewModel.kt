@@ -5,27 +5,26 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
+import co.touchlab.kermit.Logger
 import com.sample.fdelamora.samplearch.common.resources.Event
 import com.sample.fdelamora.samplearch.common.resources.utils.mutableStateOf
 import com.sample.fdelamora.samplearch.provide.mocks.api.debugflags.ApiErrorType
 import com.sample.fdelamora.samplearch.provide.mocks.api.debugflags.MockDebugFlags
 import dagger.hilt.android.lifecycle.HiltViewModel
-import timber.log.Timber
-import timber.log.debug
 import javax.inject.Inject
 
 @HiltViewModel
 class DebugViewModel @Inject constructor(
     application: Application,
-    savedStateHandle: SavedStateHandle,
+    savedStateHandle: SavedStateHandle
 ) : AndroidViewModel(application) {
 
     companion object {
-        const val DEFAULT_DELAY_MILLIS = "250"
-        const val DEFAULT_API_ERROR_TYPE_INDEX = 0
-        const val DEFAULT_USER_COUNT = "10"
-        const val DEFAULT_REPO_COUNT = "5"
-        const val DEFAULT_RESPONSE_INCOMPLETENESS = false
+        const val DefaultDelayMillis = "250"
+        const val DefaultApiErrorTypeIndex = 0
+        const val DefaultUserCount = "10"
+        const val DefaultRepoCount = "5"
+        const val DefaultResponseIncompleteness = false
     }
 
     @Inject
@@ -33,27 +32,27 @@ class DebugViewModel @Inject constructor(
 
     val availableErrorList = ApiErrorType.values().map { it.displayName }
 
-    var delay by savedStateHandle.mutableStateOf(DEFAULT_DELAY_MILLIS)
+    var delay by savedStateHandle.mutableStateOf(DefaultDelayMillis)
 
-    var apiErrorTypeSelectionIndex by savedStateHandle.mutableStateOf(DEFAULT_API_ERROR_TYPE_INDEX)
+    var apiErrorTypeSelectionIndex by savedStateHandle.mutableStateOf(DefaultApiErrorTypeIndex)
 
-    var searchUserCount by savedStateHandle.mutableStateOf(DEFAULT_USER_COUNT)
-    var userRepoCount by savedStateHandle.mutableStateOf(DEFAULT_REPO_COUNT)
-    var isIncomplete by savedStateHandle.mutableStateOf(DEFAULT_RESPONSE_INCOMPLETENESS)
+    var searchUserCount by savedStateHandle.mutableStateOf(DefaultUserCount)
+    var userRepoCount by savedStateHandle.mutableStateOf(DefaultRepoCount)
+    var isIncomplete by savedStateHandle.mutableStateOf(DefaultResponseIncompleteness)
 
     private val _closeDebugView: MutableLiveData<Event<Unit>?> = MutableLiveData(null)
     val closeDebugView: LiveData<Event<Unit>?> = _closeDebugView
 
     fun updateFlags() {
         mockDebugFlags.apply {
-            delayInMillis = delay.toLongOrNull() ?: DEFAULT_DELAY_MILLIS.toLong()
+            delayInMillis = delay.toLongOrNull() ?: DefaultDelayMillis.toLong()
             apiErrorType = ApiErrorType.fromIndex(apiErrorTypeSelectionIndex)
-            userCount = searchUserCount.toIntOrNull() ?: DEFAULT_USER_COUNT.toInt()
-            repoCount = userRepoCount.toIntOrNull() ?: DEFAULT_REPO_COUNT.toInt()
+            userCount = searchUserCount.toIntOrNull() ?: DefaultUserCount.toInt()
+            repoCount = userRepoCount.toIntOrNull() ?: DefaultRepoCount.toInt()
             isIncompleteResponse = isIncomplete
         }
 
-        Timber.debug { "New Flags: $mockDebugFlags" }
+        Logger.d { "New Flags: $mockDebugFlags" }
 
         _closeDebugView.value = Event(Unit)
     }

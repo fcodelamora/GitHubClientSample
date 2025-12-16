@@ -1,5 +1,8 @@
 package commons
 
+import BuildModules
+
+
 /**
  * Default Gradle file used by modules in `:provide` that act as Android libraries.
  */

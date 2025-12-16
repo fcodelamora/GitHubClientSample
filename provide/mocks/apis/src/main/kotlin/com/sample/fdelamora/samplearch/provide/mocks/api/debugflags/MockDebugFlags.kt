@@ -9,23 +9,23 @@ import javax.inject.Singleton
 @Singleton
 data class MockDebugFlags(
     var delayInMillis: Long = 250,
-    var apiErrorType: ApiErrorType = ApiErrorType.NO_ERROR,
+    var apiErrorType: ApiErrorType = ApiErrorType.NoError,
     var userCount: Int = 10,
     var repoCount: Int = 5,
     var isIncompleteResponse: Boolean = true
 )
 
 enum class ApiErrorType(val displayName: String) {
-    NO_ERROR("No Error"),
-    UNKNOWN_HOST_ERROR("Could not reach the server"),
-    ERROR("Generic error"),
-    UNKNOWN_ERROR("Unknown Error");
+    NoError("No Error"),
+    UnknownHostError("Could not reach the server"),
+    Error("Generic error"),
+    UnknownError("Unknown Error");
 
     fun handleError() {
         when (this) {
-            NO_ERROR -> return
-            UNKNOWN_HOST_ERROR -> throw UnknownHostException()
-            ERROR -> throw ApiException(
+            NoError -> return
+            UnknownHostError -> throw UnknownHostException()
+            Error -> throw ApiException(
                 statusCode = 422,
                 apiError = DefaultApiError(
                     errorMessage = "Default Error",
@@ -35,7 +35,7 @@ enum class ApiErrorType(val displayName: String) {
                 )
             )
 
-            UNKNOWN_ERROR -> throw ApiException(
+            UnknownError -> throw ApiException(
                 statusCode = 500,
                 apiError = DefaultApiError(
                     errorMessage = "Unknown Error",
@@ -57,8 +57,6 @@ enum class ApiErrorType(val displayName: String) {
     }
 
     companion object {
-        fun fromIndex(index: Int): ApiErrorType {
-            return values().first { it.ordinal == index }
-        }
+        fun fromIndex(index: Int): ApiErrorType = values().first { it.ordinal == index }
     }
 }

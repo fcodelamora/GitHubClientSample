@@ -12,8 +12,7 @@ data class GitHubRepo(
     val description: String?,
     val private: Boolean,
     val fork: Boolean,
-    val htmlUrl: String,
+    val htmlUrl: String
 ) : Serializable {
-    override fun equals(other: Any?): Boolean =
-        this.id == (other as? GitHubRepo)?.id
+    override fun equals(other: Any?): Boolean = this.id == (other as? GitHubRepo)?.id
 }

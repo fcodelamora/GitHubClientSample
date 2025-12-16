@@ -15,7 +15,7 @@ data class GitHubUser(
     val publicGists: Int?,
     val followers: Int?,
     val following: Int?,
-    val name: String?,
+    val name: String?
 ) : Serializable {
     override fun equals(other: Any?): Boolean {
         val theOther = other as? GitHubUser ?: return false

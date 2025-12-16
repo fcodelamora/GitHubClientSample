@@ -1,8 +1,8 @@
 package com.sample.fdelamora.samplearch.provide.mocks.api.debugflags
 
+import kotlinx.coroutines.delay
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlinx.coroutines.delay
 
 @Singleton
 class MockDebugFlagsRepository @Inject constructor(var mockDebugFlags: MockDebugFlags) :
@@ -12,9 +12,7 @@ class MockDebugFlagsRepository @Inject constructor(var mockDebugFlags: MockDebug
         this.mockDebugFlags = mockDebugFlags
     }
 
-    override fun loadMockDebugFlags(): MockDebugFlags {
-        return mockDebugFlags
-    }
+    override fun loadMockDebugFlags(): MockDebugFlags = mockDebugFlags
 
     override suspend fun handleError() {
         mockDebugFlags.run {
