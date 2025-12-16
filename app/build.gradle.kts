@@ -1,13 +1,17 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id("com.android.application")
     id("commons.android-shared-dependencies")
     kotlin("android")
-    kotlin("kapt")
     id("com.mikepenz.aboutlibraries.plugin")
     id("dagger.hilt.android.plugin")
+    id("org.jetbrains.kotlin.plugin.compose")
+    id("com.google.devtools.ksp")
 }
 
 android {
+    namespace = "com.sample.fdelamora.samplearch"
     compileSdk = AndroidBuildConfig.COMPILE_SDK_VERSION
 
     defaultConfig {
@@ -30,10 +34,7 @@ android {
 
     buildFeatures {
         compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = Dependencies.Versions.COMPOSE_KOTLIN_COMPILER_EXTENSION
+        buildConfig = true
     }
 
     android.sourceSets.all {
@@ -71,18 +72,20 @@ android {
         }
     }
 
+    composeOptions {
+        kotlinCompilerExtensionVersion = Dependencies.Versions.COMPOSE_KOTLIN_COMPILER_EXTENSION
+    }
+
     hilt {
         enableAggregatingTask = true
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_19
-        targetCompatibility = JavaVersion.VERSION_19
-    }
 
-    kotlinOptions {
-        jvmTarget = "19"
+    kotlin {
+        jvmToolchain(21)
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
+        }
     }
-    namespace = "com.sample.fdelamora.samplearch"
 }
 
 dependencies {
@@ -102,8 +105,8 @@ dependencies {
     implementation(Dependencies.ABOUT_LIBRARIES_UI)
 
     implementation(Dependencies.AndroidX.HILT)
-    kapt(Dependencies.AnnotationProcessors.HILT)
-    kapt(Dependencies.AnnotationProcessors.HILT_ANDROID)
+    ksp(Dependencies.AnnotationProcessors.HILT)
+    ksp(Dependencies.AnnotationProcessors.HILT_ANDROID)
 
     // Required by Hilt
     implementation(project(BuildModules.Provide.REPOSITORIES))

@@ -9,8 +9,8 @@ import com.sample.fdelamora.samplearch.common.resources.utils.mutableStateOf
 import com.sample.fdelamora.samplearch.core.entities.ErrorViewData
 import com.sample.fdelamora.samplearch.core.entities.exception.AppException
 import com.sample.fdelamora.samplearch.core.usecases.IErrorView
-import timber.log.Timber
-import timber.log.debug
+import co.touchlab.kermit.Logger
+
 
 open class ErrorViewModel(
     application: Application,
@@ -21,12 +21,12 @@ open class ErrorViewModel(
     var currentError by savedStateHandle.mutableStateOf<ErrorViewData?>(null)
 
     override fun showErrorView(errorViewData: ErrorViewData) {
-        Timber.debug { "showErrorView" }
+        Logger.d { "showErrorView" }
         currentError = errorViewData
     }
 
     override fun handleException(exception: Exception) {
-        Timber.debug { "handleException: $exception" }
+        Logger.d { "handleException: $exception" }
         val error = when (exception) {
             is AppException.GeneralApiException -> {
                 ErrorViewData(

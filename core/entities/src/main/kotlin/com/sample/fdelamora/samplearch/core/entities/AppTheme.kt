@@ -1,7 +1,7 @@
 package com.sample.fdelamora.samplearch.core.entities
 
-import timber.log.Timber
-import timber.log.debug
+import co.touchlab.kermit.Logger
+
 
 enum class AppTheme(val id: Int) {
     SYSTEM(0),
@@ -16,7 +16,7 @@ enum class AppTheme(val id: Int) {
                     return theme
                 }
             }
-            Timber.debug { "Invalid theme id received, fallback to SYSTEM" }
+            Logger.d { "Invalid theme id received, fallback to SYSTEM" }
             return SYSTEM
         }
     }

@@ -8,8 +8,8 @@ import com.sample.fdelamora.samplearch.core.api.githubclient.response.SearchUser
 import com.sample.fdelamora.samplearch.core.api.githubclient.response.SearchUsersResponse
 import com.sample.fdelamora.samplearch.core.api.githubclient.response.UserDetailsResponse
 import com.sample.fdelamora.samplearch.provide.mocks.api.debugflags.IMockDebugFlagsRepository
-import timber.log.Timber
-import timber.log.debug
+import co.touchlab.kermit.Logger
+
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -33,7 +33,7 @@ class MockGitHubApi @Inject constructor(private val mockDebugFlagsRepository: IM
                 following = 100,
                 avatarUrl = "https://via.placeholder.com/250x250.png/AEB1BF/00146E?text=$username"
             ).also {
-                Timber.debug { it.toString() }
+                Logger.d { it.toString() }
             }
         }
     }
@@ -45,7 +45,7 @@ class MockGitHubApi @Inject constructor(private val mockDebugFlagsRepository: IM
                 usersToGenerate = userCount,
                 isIncompleteResponse = isIncompleteResponse
             ).also {
-                Timber.debug { it.toString() }
+                Logger.d { it.toString() }
             }
         }
     }
@@ -58,7 +58,7 @@ class MockGitHubApi @Inject constructor(private val mockDebugFlagsRepository: IM
                 reposToGenerate = repoCount,
                 isIncompleteResponse = isIncompleteResponse
             ).also {
-                Timber.debug { it.toString() }
+                Logger.d { it.toString() }
             }
         }
     }

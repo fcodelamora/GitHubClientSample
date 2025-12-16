@@ -17,7 +17,7 @@ tasks.withType<Test> {
 
 dependencies {
     "implementation"(Dependencies.Kotlin.COROUTINES)
-    "implementation"(Dependencies.TIMBER_JDK)
+    "implementation"(Dependencies.KERMIT)
 
     "testImplementation"(TestDependencies.JUPITER_API)
     "testImplementation"(TestDependencies.JUPITER_ENGINE)

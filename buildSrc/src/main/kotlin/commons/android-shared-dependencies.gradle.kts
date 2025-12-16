@@ -21,6 +21,9 @@ dependencies {
     "implementation"(Dependencies.AndroidX.LIFECYCLE_RUNTIME_KTX)
     "implementation"(Dependencies.AndroidX.LIFECYCLE_VIEWMODEL)
 
+
+    "implementation"(platform(Dependencies.Compose.COMPOSE_BOM))
+    "implementation"(Dependencies.Compose.ICONS_EXTENDED)
     "implementation"(Dependencies.Compose.MATERIAL)
     "implementation"(Dependencies.Compose.RUNTIME)
     "implementation"(Dependencies.Compose.RUNTIME_LIVEDATA)
@@ -29,17 +32,14 @@ dependencies {
     "implementation"(Dependencies.Compose.UI_TOOLING_PREVIEW)
     "implementation"(Dependencies.Compose.NAVIGATION)
     "implementation"(Dependencies.Compose.LIFECYCLE_VIEWMODEL)
-    "implementation"(Dependencies.Compose.BROWSER)
-
-    "implementation"(Dependencies.Accompanist.NAVIGATION_ANIMATION)
-    "implementation"(Dependencies.Accompanist.SYSTEM_UI_CONTROLLER)
+    "implementation"(Dependencies.AndroidX.BROWSER)
 
     "implementation"(Dependencies.COIL)
     "implementation"(Dependencies.COIL_COMPOSE_EXTENSIONS)
 
     "implementation"(Dependencies.LOTTIE)
 
-    "implementation"(Dependencies.TIMBER_ANDROID)
+    "implementation"(Dependencies.KERMIT)
 
     "testImplementation"(TestDependencies.JUPITER_API)
     "testImplementation"(TestDependencies.JUPITER_ENGINE)
@@ -48,5 +48,4 @@ dependencies {
     "testImplementation"(TestDependencies.MOCKITO_KOTLIN)
 
     "androidTestImplementation"(TestAndroidDependencies.ESPRESSO)
-    "androidTestImplementation"(TestAndroidDependencies.ANNOTATION)
 }

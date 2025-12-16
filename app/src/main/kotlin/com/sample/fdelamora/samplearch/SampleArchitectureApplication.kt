@@ -8,43 +8,11 @@ import coil.memory.MemoryCache
 import dagger.hilt.android.HiltAndroidApp
 import okhttp3.Dispatcher
 import okhttp3.OkHttpClient
-import timber.log.LogcatTree
-import timber.log.Timber
-import timber.log.Tree
 
 @HiltAndroidApp
 open class SampleArchitectureApplication :
     Application(),
     ImageLoaderFactory {
-
-    override fun onCreate() {
-        super.onCreate()
-
-        // Setup Libraries
-        setupTimber()
-    }
-
-    private fun setupTimber() {
-        if (BuildConfig.DEBUG) {
-            Timber.plant(SingleTagTree())
-        }
-    }
-
-    private class SingleTagTree : Tree() {
-        private val baseTree = LogcatTree("SampleArchitecture")
-
-        override fun isLoggable(priority: Int, tag: String?): Boolean =
-            BuildConfig.DEBUG
-
-        override fun performLog(
-            priority: Int,
-            tag: String?,
-            throwable: Throwable?,
-            message: String?
-        ) {
-            baseTree.log(priority, tag, throwable, message)
-        }
-    }
 
     // Set maxRequest to prevent connection issues to the image server due to overload
     override fun newImageLoader(): ImageLoader {

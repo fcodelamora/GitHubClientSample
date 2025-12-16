@@ -1,6 +1,7 @@
 package commons
 
 import Dependencies
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 /**
  * Base Gradle file used by all com.android.library Gradle files to reduce repetition of shared
@@ -10,8 +11,9 @@ plugins {
     id("com.android.library")
     id("commons.android-shared-dependencies")
     kotlin("android")
-    kotlin("kapt")
+    id("com.google.devtools.ksp")
     id("dagger.hilt.android.plugin")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
@@ -26,12 +28,8 @@ android {
 
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_19
-        targetCompatibility = JavaVersion.VERSION_19
-    }
-
-    kotlinOptions {
-        jvmTarget = "19"
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     android.sourceSets.all {
@@ -50,16 +48,24 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     composeOptions {
         kotlinCompilerExtensionVersion = Dependencies.Versions.COMPOSE_KOTLIN_COMPILER_EXTENSION
     }
 
+    kotlin {
+        jvmToolchain(21)
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
+        }
+    }
+
 }
 
 dependencies {
     implementation(Dependencies.AndroidX.HILT)
-    kapt(Dependencies.AnnotationProcessors.HILT)
-    kapt(Dependencies.AnnotationProcessors.HILT_ANDROID)
+    ksp(Dependencies.AnnotationProcessors.HILT)
+    ksp(Dependencies.AnnotationProcessors.HILT_ANDROID)
 }

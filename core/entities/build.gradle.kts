@@ -1,6 +1,6 @@
 plugins {
     id("commons.kotlin-library")
-    kotlin("kapt")
+    id("com.google.devtools.ksp")
 }
 
 dependencies {

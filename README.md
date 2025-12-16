@@ -19,7 +19,7 @@ Test are made available through the Gradle task `Run Tests` in Android Studio
 
 - You will need to create a `project.properties` file in the project root directory, and
 add `apiKeys.githubApiKey="your_api_key_from_github_api"`.
-- Java `19` is used to build the project.
+- Java `21` is used to build the project.
 
 ## Screenshots
 

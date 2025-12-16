@@ -1,7 +1,7 @@
 object AndroidBuildConfig {
     const val APPLICATION_ID = "com.sample.fdelamora.samplearch"
 
-    const val COMPILE_SDK_VERSION = 34
+    const val COMPILE_SDK_VERSION = 36
     const val MIN_SDK_VERSION = 28
     const val TARGET_SDK_VERSION = COMPILE_SDK_VERSION
 

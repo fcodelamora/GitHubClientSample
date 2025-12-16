@@ -9,10 +9,9 @@ import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import co.touchlab.kermit.Logger
 import com.sample.fdelamora.samplearch.common.resources.AppDrawable
 import com.sample.fdelamora.samplearch.debug.DebugActivity
-import timber.log.Timber
-import timber.log.debug
 
 class DebugSampleArchitectureApplication : SampleArchitectureApplication() {
 
@@ -39,7 +38,7 @@ class DebugSampleArchitectureApplication : SampleArchitectureApplication() {
 
         if (channelDebug !in notificationManager.notificationChannels) {
             notificationManager.createNotificationChannel(channelDebug).also {
-                Timber.debug { "Created Notification Channel: ${channelDebug.name}" }
+                Logger.d { "Created Notification Channel: ${channelDebug.name}" }
             }
         }
     }

@@ -10,8 +10,8 @@ import com.sample.fdelamora.samplearch.common.resources.utils.mutableStateOf
 import com.sample.fdelamora.samplearch.provide.mocks.api.debugflags.ApiErrorType
 import com.sample.fdelamora.samplearch.provide.mocks.api.debugflags.MockDebugFlags
 import dagger.hilt.android.lifecycle.HiltViewModel
-import timber.log.Timber
-import timber.log.debug
+import co.touchlab.kermit.Logger
+
 import javax.inject.Inject
 
 @HiltViewModel
@@ -53,7 +53,7 @@ class DebugViewModel @Inject constructor(
             isIncompleteResponse = isIncomplete
         }
 
-        Timber.debug { "New Flags: $mockDebugFlags" }
+        Logger.d { "New Flags: $mockDebugFlags" }
 
         _closeDebugView.value = Event(Unit)
     }
