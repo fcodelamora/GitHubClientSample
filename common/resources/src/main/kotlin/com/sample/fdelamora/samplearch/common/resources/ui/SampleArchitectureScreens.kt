@@ -6,6 +6,5 @@ sealed class SampleArchitectureScreens(val name: String) {
         object UserRepos : GitHubClient("user_repos")
     }
 
-    override fun equals(other: Any?): Boolean =
-        this.name == (other as? SampleArchitectureScreens)?.name
+    override fun equals(other: Any?): Boolean = this.name == (other as? SampleArchitectureScreens)?.name
 }

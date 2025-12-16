@@ -10,14 +10,13 @@ import com.sample.fdelamora.samplearch.common.resources.ui.AppUserInterface
 import com.sample.fdelamora.samplearch.core.entities.AppTheme
 
 @Composable
-fun CatalogView(content: @Composable () -> Unit) =
-    AppUserInterface(AppTheme.RED) {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colors.background
-        ) {
-            Column {
-                content()
-            }
+fun CatalogView(content: @Composable () -> Unit) = AppUserInterface(AppTheme.RED) {
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colors.background
+    ) {
+        Column {
+            content()
         }
     }
+}

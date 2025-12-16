@@ -1,5 +1,6 @@
 package commons
 
+import AndroidBuildConfig
 import Dependencies
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 

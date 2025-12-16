@@ -24,7 +24,7 @@ class DebugSampleArchitectureApplication : SampleArchitectureApplication() {
 
     private fun createDebugNotificationChannel() {
         val channelDebug = NotificationChannel(
-            CHANNEL_ID,
+            ChannelId,
             "Debug",
             NotificationManager.IMPORTANCE_LOW
         ).apply {
@@ -52,7 +52,7 @@ class DebugSampleArchitectureApplication : SampleArchitectureApplication() {
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
 
-        val notification = NotificationCompat.Builder(this, CHANNEL_ID)
+        val notification = NotificationCompat.Builder(this, ChannelId)
             .setSmallIcon(AppDrawable.ic_debug_notification)
             .setContentTitle("Debug options")
             .setContentText("Open debug screen")
@@ -70,11 +70,11 @@ class DebugSampleArchitectureApplication : SampleArchitectureApplication() {
             return
         }
 
-        NotificationManagerCompat.from(this).notify(NOTIFICATION_ID, notification)
+        NotificationManagerCompat.from(this).notify(NotificationId, notification)
     }
 
     companion object {
-        const val CHANNEL_ID = "debug_options_channel"
-        const val NOTIFICATION_ID = 9999
+        const val ChannelId = "debug_options_channel"
+        const val NotificationId = 9999
     }
 }

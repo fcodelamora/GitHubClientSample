@@ -54,7 +54,7 @@ class DebugActivity : ComponentActivity() {
         finish()
         overridePendingTransition(
             com.sample.fdelamora.samplearch.R.anim.stay_in_place,
-            com.sample.fdelamora.samplearch.R.anim.slide_out_to_bottom,
+            com.sample.fdelamora.samplearch.R.anim.slide_out_to_bottom
         )
     }
 }

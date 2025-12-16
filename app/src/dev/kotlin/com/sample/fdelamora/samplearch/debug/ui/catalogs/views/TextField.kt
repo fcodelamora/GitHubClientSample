@@ -13,7 +13,10 @@ import com.sample.fdelamora.samplearch.common.resources.ui.catalogs.CatalogView
 // dev-only TextFields
 
 @Composable
-fun NumericTextField(value: String, onValueChange: (String) -> Unit) = OutlinedTextField(
+fun NumericTextField(
+    value: String,
+    onValueChange: (String) -> Unit
+) = OutlinedTextField(
     value = value,
     onValueChange = { newValue -> onValueChange.invoke(newValue) },
     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),

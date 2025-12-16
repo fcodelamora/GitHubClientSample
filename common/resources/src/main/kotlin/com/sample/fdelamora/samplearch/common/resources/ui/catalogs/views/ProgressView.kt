@@ -45,7 +45,7 @@ fun SimpleLoadingView() {
 @Composable
 fun LoadingFromNetworkView(isLoading: Boolean = true) {
     val composition by rememberLottieComposition(
-        LottieCompositionSpec.Asset("animations/40251-network-activity-icon.json"),
+        LottieCompositionSpec.Asset("animations/40251-network-activity-icon.json")
     )
     val dynamicProperties = rememberLottieDynamicProperties(
         rememberLottieDynamicProperty(
@@ -57,7 +57,7 @@ fun LoadingFromNetworkView(isLoading: Boolean = true) {
             property = LottieProperty.COLOR,
             value = MaterialTheme.colors.secondary.toArgb(),
             keyPath = arrayOf("**")
-        ),
+        )
     )
     if (isLoading) {
         Box(

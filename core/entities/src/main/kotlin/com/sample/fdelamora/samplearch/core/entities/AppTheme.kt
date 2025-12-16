@@ -2,7 +2,6 @@ package com.sample.fdelamora.samplearch.core.entities
 
 import co.touchlab.kermit.Logger
 
-
 enum class AppTheme(val id: Int) {
     SYSTEM(0),
     LIGHT(1),

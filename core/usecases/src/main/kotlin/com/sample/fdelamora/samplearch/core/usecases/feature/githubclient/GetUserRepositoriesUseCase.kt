@@ -10,9 +10,7 @@ class GetUserRepositoriesUseCase(
     private val view: IGetUserRepositoriesView,
     private val gitHubRepository: IGitHubRepository
 ) {
-    suspend fun execute(
-        user: GitHubUser,
-    ) {
+    suspend fun execute(user: GitHubUser) {
         view.showProgressView()
 
         try {
@@ -30,5 +28,8 @@ class GetUserRepositoriesUseCase(
 }
 
 interface IGetUserRepositoriesView : IErrorView, IProgressView {
-    fun onUserRepositoriesReceived(gitHubUser: GitHubUser, repositories: List<GitHubRepo>)
+    fun onUserRepositoriesReceived(
+        gitHubUser: GitHubUser,
+        repositories: List<GitHubRepo>
+    )
 }

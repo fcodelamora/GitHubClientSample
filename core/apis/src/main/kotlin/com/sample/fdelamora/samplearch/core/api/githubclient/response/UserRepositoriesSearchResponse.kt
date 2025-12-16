@@ -12,7 +12,7 @@ data class SearchUserRepositoriesResponse(
     val incompleteResponse: Boolean,
 
     @field:Json(name = "items")
-    val items: List<SearchUserRepositoriesDetails>,
+    val items: List<SearchUserRepositoriesDetails>
 )
 
 @JsonClass(generateAdapter = true)
@@ -46,6 +46,6 @@ data class SearchUserRepositoriesDetails(
     val fork: Boolean,
 
     @field:Json(name = "html_url")
-    val htmlUrl: String,
+    val htmlUrl: String
 
 )

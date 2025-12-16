@@ -23,7 +23,7 @@ val LightColorPalette = lightColors(
     onPrimary = Gray200,
     onSecondary = Gray200,
     onBackground = Color.Black,
-    onSurface = Color.Black,
+    onSurface = Color.Black
 )
 
 val RedColorPalette = lightColors(
@@ -37,7 +37,7 @@ val RedColorPalette = lightColors(
     onPrimary = Gray200,
     onSecondary = Gray200,
     onBackground = Color.Black,
-    onSurface = Color.Black,
+    onSurface = Color.Black
 )
 
 val DarkColorPalette = darkColors(

@@ -23,7 +23,7 @@ fun Information1Text(
     textAlign = TextAlign.Center,
     modifier = modifier
         .fillMaxWidth()
-        .padding(20.dp),
+        .padding(20.dp)
 )
 
 @Composable

@@ -131,7 +131,7 @@ fun TabButton(
                         alpha = 0.5f
                     )
                 },
-                textDecoration = if (isEnabled.not()) TextDecoration.LineThrough else null,
+                textDecoration = if (isEnabled.not()) TextDecoration.LineThrough else null
             ),
             modifier = Modifier.padding(vertical = 8.dp, horizontal = 10.dp)
         )

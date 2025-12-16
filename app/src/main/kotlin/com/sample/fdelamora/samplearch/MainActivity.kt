@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             SampleArchitectureApp(
-                startScreenRoute = SampleArchitectureScreens.GitHubClient.SearchUsers.name,
+                startScreenRoute = SampleArchitectureScreens.GitHubClient.SearchUsers.name
             )
         }
     }
@@ -58,7 +58,7 @@ class MainActivity : ComponentActivity() {
             Box {
                 SampleArchitectureNavHost(
                     navController = navController,
-                    startScreenRoute = startScreenRoute,
+                    startScreenRoute = startScreenRoute
                 )
             }
         }
@@ -69,19 +69,19 @@ class MainActivity : ComponentActivity() {
     fun SampleArchitectureNavHost(
         navController: NavHostController,
         startScreenRoute: String,
-        modifier: Modifier = Modifier,
+        modifier: Modifier = Modifier
     ) {
         NavHost(
             navController = navController,
             startDestination = startScreenRoute,
-            modifier = modifier,
+            modifier = modifier
         ) {
             composable(
                 route = SampleArchitectureScreens.GitHubClient.SearchUsers.name,
                 enterTransition = Animations.enterTransition,
                 exitTransition = Animations.exitTransition,
                 popEnterTransition = Animations.popEnterTransition,
-                popExitTransition = Animations.popExitTransition,
+                popExitTransition = Animations.popExitTransition
             ) {
                 SearchUsersScreen.Default.Screen(
                     viewModel = searchUsersViewModel,
@@ -89,7 +89,7 @@ class MainActivity : ComponentActivity() {
                         userReposViewModel.clearRepos()
                         userReposViewModel.setGitHubUser(user)
                         navController.navigate(SampleArchitectureScreens.GitHubClient.UserRepos.name)
-                    },
+                    }
                 )
             }
             composable(
@@ -97,11 +97,11 @@ class MainActivity : ComponentActivity() {
                 enterTransition = Animations.enterTransition,
                 exitTransition = Animations.exitTransition,
                 popEnterTransition = Animations.popEnterTransition,
-                popExitTransition = Animations.popExitTransition,
+                popExitTransition = Animations.popExitTransition
             ) {
                 UserReposScreen.Default.Screen(
                     viewModel = userReposViewModel,
-                    navController = navController,
+                    navController = navController
                 )
             }
         }
@@ -119,7 +119,7 @@ private fun DefaultPreview() {
             foundUsers = listOf(),
             onSearchUsersPromptUpdated = {},
             onSearchUsersClick = {},
-            onShowUserReposClick = {},
+            onShowUserReposClick = {}
         )
     }
 }

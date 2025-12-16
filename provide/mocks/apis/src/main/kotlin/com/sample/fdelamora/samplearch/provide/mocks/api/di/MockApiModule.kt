@@ -31,7 +31,5 @@ object MockApiModule {
 interface MockDebugFlagsRepositoryModule {
 
     @Binds
-    fun bindMockDebugFlagsRepository(
-        repository: MockDebugFlagsRepository
-    ): IMockDebugFlagsRepository
+    fun bindMockDebugFlagsRepository(repository: MockDebugFlagsRepository): IMockDebugFlagsRepository
 }

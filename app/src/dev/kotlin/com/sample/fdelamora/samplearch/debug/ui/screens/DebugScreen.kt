@@ -77,7 +77,7 @@ object DebugScreen {
                 SimpleSpinner(
                     availableErrorList,
                     apiErrorTypeSelectedIndex,
-                    onApiErrorSelected,
+                    onApiErrorSelected
                 )
 
                 SectionSubtitleText(text = "API Response Delay (ms)")
@@ -93,19 +93,19 @@ object DebugScreen {
                 DebugCheckBox(
                     text = "Do Pagination?\n[IsIncompleteResponse]",
                     isChecked = isIncompleteResponse,
-                    onCheckedChange = onIsIncompleteResponse,
+                    onCheckedChange = onIsIncompleteResponse
                 )
 
                 SectionSubtitleText(text = "Search Users - User Count")
                 NumericTextField(
                     value = searchUserCount,
-                    onValueChange = onSearchUserCountUpdated,
+                    onValueChange = onSearchUserCountUpdated
                 )
 
                 SectionSubtitleText(text = "User Repos - Repos Count")
                 NumericTextField(
                     value = userReposCount,
-                    onValueChange = onUserReposCountUpdated,
+                    onValueChange = onUserReposCountUpdated
                 )
 
                 Spacer(Modifier.size(24.dp))

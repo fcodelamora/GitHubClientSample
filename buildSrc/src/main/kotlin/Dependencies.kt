@@ -7,7 +7,6 @@ object Dependencies {
         // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
         const val COMPOSE_KOTLIN_COMPILER_EXTENSION = "1.10.0"
 
-
         const val HILT = "2.57.2"
     }
 
@@ -74,7 +73,6 @@ object Dependencies {
         const val HILT_ANDROID = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
         const val HILT = "com.google.dagger:hilt-compiler:${Versions.HILT}"
     }
-
 
     object TestAndroidDependencies {
         const val ESPRESSO = "androidx.test.espresso:espresso-core:3.7.0"

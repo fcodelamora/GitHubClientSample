@@ -12,7 +12,5 @@ import dagger.hilt.components.SingletonComponent
 interface RepositoriesModule {
 
     @Binds
-    fun bindGitHubRepository(
-        repository: GitHubRepository
-    ): IGitHubRepository
+    fun bindGitHubRepository(repository: GitHubRepository): IGitHubRepository
 }

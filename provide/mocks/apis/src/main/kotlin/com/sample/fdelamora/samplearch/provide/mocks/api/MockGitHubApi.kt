@@ -1,5 +1,6 @@
 package com.sample.fdelamora.samplearch.provide.mocks.api
 
+import co.touchlab.kermit.Logger
 import com.sample.fdelamora.samplearch.core.api.githubclient.IGitHubApi
 import com.sample.fdelamora.samplearch.core.api.githubclient.requests.GetSearchUserRepositoriesRequestParams
 import com.sample.fdelamora.samplearch.core.api.githubclient.requests.GetSearchUsersRequestParams
@@ -8,8 +9,6 @@ import com.sample.fdelamora.samplearch.core.api.githubclient.response.SearchUser
 import com.sample.fdelamora.samplearch.core.api.githubclient.response.SearchUsersResponse
 import com.sample.fdelamora.samplearch.core.api.githubclient.response.UserDetailsResponse
 import com.sample.fdelamora.samplearch.provide.mocks.api.debugflags.IMockDebugFlagsRepository
-import co.touchlab.kermit.Logger
-
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -50,8 +49,9 @@ class MockGitHubApi @Inject constructor(private val mockDebugFlagsRepository: IM
         }
     }
 
-    override suspend fun searchUserRepositories(requestParams: GetSearchUserRepositoriesRequestParams):
-        SearchUserRepositoriesResponse {
+    override suspend fun searchUserRepositories(
+        requestParams: GetSearchUserRepositoriesRequestParams
+    ): SearchUserRepositoriesResponse {
         mockDebugFlagsRepository.handleError()
         mockDebugFlagsRepository.loadMockDebugFlags().run {
             return generateSearchUserRepositoriesResponse(
@@ -133,7 +133,7 @@ class MockGitHubApi @Inject constructor(private val mockDebugFlagsRepository: IM
             hireable = null,
             blog = if (identifier % 3 == 0) null else "My Blog #$identifier",
             company = if (identifier % 2 == 0) null else "Company #$identifier Inc.",
-            suspendedAt = null,
+            suspendedAt = null
         )
     }
 

@@ -22,7 +22,11 @@ import com.sample.fdelamora.samplearch.common.resources.ui.catalogs.CatalogView
 // dev-only Spinners
 
 @Composable
-fun SimpleSpinner(listValues: List<String>, selectedIndex: Int, onSelected: (Int) -> Unit) = Column(
+fun SimpleSpinner(
+    listValues: List<String>,
+    selectedIndex: Int,
+    onSelected: (Int) -> Unit
+) = Column(
     Modifier.fillMaxWidth()
 ) {
     var expanded by remember { mutableStateOf(false) }
@@ -35,12 +39,12 @@ fun SimpleSpinner(listValues: List<String>, selectedIndex: Int, onSelected: (Int
         Icon(
             imageVector = Icons.Filled.ArrowDropDown,
             tint = MaterialTheme.colors.secondaryVariant,
-            contentDescription = null,
+            contentDescription = null
         )
     }
     DropdownMenu(
         expanded = expanded,
-        onDismissRequest = { expanded = false },
+        onDismissRequest = { expanded = false }
     ) {
         listValues.forEachIndexed { index, label ->
             DropdownMenuItem(onClick = {

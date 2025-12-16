@@ -3,14 +3,13 @@ package com.sample.fdelamora.samplearch.common.resources.viewmodels
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.SavedStateHandle
+import co.touchlab.kermit.Logger
 import com.sample.fdelamora.samplearch.common.resources.BuildConfig
 import com.sample.fdelamora.samplearch.common.resources.R
 import com.sample.fdelamora.samplearch.common.resources.utils.mutableStateOf
 import com.sample.fdelamora.samplearch.core.entities.ErrorViewData
 import com.sample.fdelamora.samplearch.core.entities.exception.AppException
 import com.sample.fdelamora.samplearch.core.usecases.IErrorView
-import co.touchlab.kermit.Logger
-
 
 open class ErrorViewModel(
     application: Application,
@@ -62,6 +61,5 @@ open class ErrorViewModel(
         currentError = null
     }
 
-    protected fun getString(resId: Int) =
-        getApplication<Application>().getString(resId)
+    protected fun getString(resId: Int) = getApplication<Application>().getString(resId)
 }

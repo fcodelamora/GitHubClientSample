@@ -1,9 +1,8 @@
 package com.sample.fdelamora.samplearch.core.api.githubclient
 
+import co.touchlab.kermit.Logger
 import okhttp3.Interceptor
 import okhttp3.Response
-import co.touchlab.kermit.Logger
-
 
 class GitHubRequestInterceptor(private val apiKey: String) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {

@@ -104,5 +104,5 @@ data class UserDetailsResponse(
     val company: String?,
 
     @field:Json(name = "suspended_at")
-    val suspendedAt: String?,
+    val suspendedAt: String?
 )

@@ -15,5 +15,5 @@ data class DefaultApiError(
 @JsonClass(generateAdapter = true)
 data class ApiErrorDetails(
     @field:Json(name = "message")
-    val errorMessage: String?,
+    val errorMessage: String?
 )

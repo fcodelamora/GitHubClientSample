@@ -28,12 +28,13 @@ add `apiKeys.githubApiKey="your_api_key_from_github_api"`.
 ## Android Version
 
 * `minSdkVersion` = 28 (Android 9)
-* `targetSdkVersion` = 31 (Android 12)
+* `targetSdkVersion` = 36 (Android 16)
 
 ## Tested Devices
 
 * [Emulator] Pixel 3 (Android 9)
-* Samsung S9+ (Android 10) [*Main development device*]
+* Samsung S9+ (Android 11) 
+* Samsung S24 (Android 16) [*Main development device*]
 * [Emulator] Pixel 4 (Android 11)
 * [Emulator] Pixel 4 (Android 12)
 
